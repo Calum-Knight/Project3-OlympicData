@@ -7,7 +7,7 @@ from psycopg2.extras import RealDictCursor
 
 
 
-conn = psycopg2.connect(database="Olympic_db", user=user.username,  
+conn = psycopg2.connect(database="olympic_db", user= user.username,  
 password = user.password, host="localhost")
 print("connected")
 
