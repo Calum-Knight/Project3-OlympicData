@@ -15,8 +15,10 @@ mycursor = conn.cursor(cursor_factory=RealDictCursor)
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
+
+
+@app.route('/data')
+def data():
     mycursor.execute("SELECT * FROM olympic_data where year = 1994")
     results = mycursor.fetchall()
     # for x in mycursor:
