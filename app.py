@@ -17,15 +17,12 @@ app = Flask(__name__)
 
 
 
-@app.route('/data')
+@app.route('/')
 def data():
-    mycursor.execute("SELECT * FROM olympic_data where year = 1994")
+    mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
     results = mycursor.fetchall()
-    # for x in mycursor:
-    #     print(x)
-    # data = [col for col in mycursor]
-    # mycursor.close()
-    # print(results)
+
+
     return jsonify(results)
     
 

@@ -6,10 +6,16 @@
 
 
 //d3.json('http://127.0.0.1:5000').then(function (data) {
-d3.json('../data.json')
-.then(function(data){
-  
+d3.json('/data.json').then(function (data) {
+
     console.log(data);
+
+    trace1 = {
+        x: [results.year],
+        y: [results.sex.count()],
+        type: 'bar'
+    }
+    Plotly.newPlot('myDiv', trace1)
 
     // var trace1 = {
     //     x: ['giraffes', 'orangutans', 'monkeys'],
