@@ -16,16 +16,11 @@ mycursor = conn.cursor(cursor_factory=RealDictCursor)
 app = Flask(__name__)
 
 
+@app.route('/')
 
-@app.route("/")
 def data():
     mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
     results = mycursor.fetchall()
-    # for x in mycursor:
-    #     print(x)
-    # data = [col for col in mycursor]
-    # mycursor.close()
-    # print(results)
     return jsonify(results)
     # return render_template('index.html', data=data)
 

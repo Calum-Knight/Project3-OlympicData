@@ -9,6 +9,7 @@
 // d3.json(url).then(function (data) {
     d3.json('../data.json')
 
+
     .then(function(data){
     
         // console.log(data);
@@ -44,7 +45,7 @@
             type: 'bar'
         };
         let data1 = [trace1];    
-        Plotly.newPlot('myDiv', data1)
+        Plotly.newPlot('plot', data1)
     
     
     
@@ -81,3 +82,5 @@
     // });
     
     //)
+
+
