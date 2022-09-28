@@ -9,21 +9,44 @@
   <title>Project 3</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>homepage</title>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- <script src="../olympics.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homepage</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='olympics.js') }}"></script>
+
 
 </head>
 
 <body>
-
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Olympics</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home Page<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pageone">PageOne</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pagetwo">PageTwo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pagethree">PageThree</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 jumbotron text-center" style = "background-color: #fcf8e3;">
+      <div class="col-md-12 jumbotron text-center" style="background-color: #fcf8e3;">
         <h1 style="color: #090909;">Winter Olympics 1912-2016</h1>
         <p style="color: #0c0a08;">By- Calum, Minnie, Mohammed, Ruchi</p>
       </div>
@@ -53,15 +76,16 @@
       <div class="col-md-12">
         <div id="bubble"></div>
       </div> -->
-    </div>
+  </div>
   </div>
 
 </body>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="../olympics.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script src="../static/olympics.js"></script> -->
 
 </body>
+
 </html>

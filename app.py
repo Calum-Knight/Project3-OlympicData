@@ -19,32 +19,49 @@ app = Flask(__name__)
 @app.route('/')
 
 def data():
-    mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
-    results = mycursor.fetchall()
-    return jsonify(results)
-    # return render_template('index.html', data=data)
+    # mycursor.execute("SELECT Year, count(year) FROM olympic_data where Season = 'Winter' and Sex = 'M' group by year order by year")
+    # results_male = mycursor.fetchall()
+    # mycursor.execute("SELECT Year, count(year) FROM olympic_data where Season = 'Winter' and Sex = 'F' group by year order by year")
+    # results_female = mycursor.fetchall()
+    # data = {
+    #     "male": results_male,
+    #     "female": results_female
+    # }
+    # return jsonify(data)
+    return render_template('index.html')
 
     
     # return render_template('index.html')
 
-# @app.route('/pageone')
-# def PageOne():
-#     mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
-#     data = mycursor.fetchall()
-    
-#     return jsonify(data)
+@app.route('/pageone')
 
-# @app.route('/pagetwo')
-# def PageTwo():
-#     mycursor.execute("SELECT * FROM olympic_data")
-#     data = mycursor.fetchall()
-#     return render_template('index.html', data=data)
+def pageone():
+    mycursor.execute("SELECT Year, count(year) FROM olympic_data where Season = 'Winter' and Sex = 'M' group by year order by year")
+    results_male = mycursor.fetchall()
+    mycursor.execute("SELECT Year, count(year) FROM olympic_data where Season = 'Winter' and Sex = 'F' group by year order by year")
+    results_female = mycursor.fetchall()
+    data = {
+        "male": results_male,
+        "female": results_female
+    }
+    return jsonify(data)
+    # return render_template('index.html')
 
-# @app.route('/pagethree')
-# def PageThree():
-#     mycursor.execute("SELECT * FROM olympic_data")
-#     data = mycursor.fetchall()
-#     return render_template('index.html', data=data)
+@app.route('/pagetwo')
+def PageTwo():
+    mycursor.execute("SELECT noc, Medal, count(Medal) FROM olympic_data where Season = 'Winter' and year = {{year}} group by Medal, noc order by count(Medal)")
+    data = mycursor.fetchall()
+
+    return jsonify(data)
+    # return render_template('index.html')
+
+@app.route('/pagethree')
+def PageThree():
+    mycursor.execute("SELECT noc, city, year, medal, count(medal) FROM olympic_data WHERE Season = 'Winter' group by medal, noc, city, year order by year")
+    data = mycursor.fetchall()
+
+    return jsonify(data)
+    # return render_template('index.html')
 
 
 if __name__ == "__main__":
