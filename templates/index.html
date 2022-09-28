@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>homepage</title>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project 3</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-    <div class="container">
-        <div>
 
-            Hello World!
-
-        </div>
-
-
-        <div class="jumbotron text-center">
-
-            <h1>Welcome</h1>
-
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center" style = "background-color: #fcf8e3;">
+        <h1 style="color: #090909;">Winter Olympics 1912-2016</h1>
+        <p style="color: #0c0a08;">By- Calum, Minnie, Mohammed, Ruchi</p>
+      </div>
     </div>
-    <script src="../olympics.js"></script>
+    <div class="row">
+      <!-- <div class="col-md-2">
+        <div class="well">
+          <h5 style="color: #090909;"><strong>Year:</strong></h5>
+          <select id="selDataset" onchange="dropdown(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading" style = "background-color: #fcf8e3;">
+            <h3 style="color: #0c0b0b; background-color: rgb(253, 251, 251);" class="panel-title">Olympic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div> -->
+      <div class="col-md-12">
+        <div id="myDiv"></div>
+      </div>
+      <!-- <div class="col-md-5">
+        <div id="gauge"></div>
+      </div> -->
+    </div>
+    <!-- <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div> -->
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../olympics.js"></script>
+
 </body>
 
 </html>

@@ -17,9 +17,9 @@ app = Flask(__name__)
 
 
 
-@app.route('/data')
+@app.route("/")
 def data():
-    mycursor.execute("SELECT * FROM olympic_data where year = 1994")
+    mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
     results = mycursor.fetchall()
     # for x in mycursor:
     #     print(x)
@@ -27,17 +27,17 @@ def data():
     # mycursor.close()
     # print(results)
     return jsonify(results)
-    
+    # return render_template('index.html', data=data)
 
     
     # return render_template('index.html')
 
 # @app.route('/pageone')
 # def PageOne():
-#     mycursor.execute("SELECT * FROM olympic_data")
+#     mycursor.execute("SELECT * FROM olympic_data where Season = 'Winter'")
 #     data = mycursor.fetchall()
     
-#     return render_template('index.html', data=data)
+#     return jsonify(data)
 
 # @app.route('/pagetwo')
 # def PageTwo():
