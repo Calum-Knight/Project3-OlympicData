@@ -1,5 +1,5 @@
 // var url = "/Data"
-d3.json('pageone').then(function (data) {
+d3.json('/pageone').then(function (data) {
     // d3.json(url).then(function (data) {
     // d3.json('../data.json')
 

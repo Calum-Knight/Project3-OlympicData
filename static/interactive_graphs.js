@@ -1,4 +1,4 @@
-d3.json('pagetwo').then(function (data) {
+d3.json('/pagetwo').then(function (data) {
 
     console.log(data);
 
