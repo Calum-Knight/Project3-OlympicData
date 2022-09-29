@@ -30,8 +30,8 @@ def data():
     # return jsonify(data)
     return render_template('index.html')
 
-    
-    # return render_template('index.html')
+
+
 
 @app.route('/pageone')
 
@@ -45,12 +45,28 @@ def pageone():
         "female": results_female
     }
     return jsonify(data)
-    # return render_template('index.html')
+    # return render_template('HTML1.html')
 
 @app.route('/pagetwo')
 def PageTwo():
-    mycursor.execute("SELECT noc, Medal, count(Medal) FROM olympic_data where Season = 'Winter' and year = {{year}} group by Medal, noc order by count(Medal)")
-    data = mycursor.fetchall()
+    mycursor.execute("SELECT noc, Medal, count(Medal), event FROM olympic_data where Season = 'Winter' and year = 2014 and Medal = 'Gold' group by Event, Medal, noc order by medal, count(Medal) desc")
+    gold_data = mycursor.fetchall()
+
+    # gold = {}
+
+    # for x in gold_data:
+    #     gold[x["noc"]= : x["medal"]]
+
+    mycursor.execute("SELECT noc, Medal, count(Medal), event FROM olympic_data where Season = 'Winter' and year = 2014 and Medal = 'Silver' group  by Event, Medal, noc order by medal, count(Medal) desc")
+    silver_data = mycursor.fetchall()
+    mycursor.execute("SELECT noc, Medal, count(Medal), event FROM olympic_data where Season = 'Winter' and year = 2014 and Medal = 'Bronze' group by Event, Medal, noc order by medal, count(Medal) desc")
+    bronze_data = mycursor.fetchall()
+
+    data = {
+        "Gold": gold_data,
+        "Silver": len(silver_data),
+        "Bronze": len(bronze_data)
+    }
 
     return jsonify(data)
     # return render_template('index.html')

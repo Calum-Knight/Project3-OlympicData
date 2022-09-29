@@ -46,17 +46,20 @@ d3.json('pageone').then(function (data) {
     trace1 = {
         x: olympic_year_f,
         y: olympic_f,
-        type: 'bar'
+        type: 'bar',
+        name: "female"
     };
     trace2 = {
         x: olympic_year_m,
         y: olympic_m,
-        type: 'bar'
+        type: 'bar',
+        name: "male"
+
     };
 
     layout = {
 
-        title: 'Gender of Participants Over the Year',
+        title: 'Gender of Participants Over the Years',
         xaxis: {
             tickangle: -45
         },
@@ -83,8 +86,8 @@ d3.json('pageone').then(function (data) {
 
 
 
-d3.json('pagethree').then(function (data) {
+// d3.json('pagethree').then(function (data) {
 
-    console.log(data)
+//     console.log(data)
 
-});
+// });
