@@ -78,16 +78,58 @@ d3.json('/pageone').then(function (data) {
     // console.log(Male);
     //    return Male.year;
 
-
-
-
-
 });
 
 
+function buildYearChart(year) {
 
-// d3.json('pagethree').then(function (data) {
+    console.log(year)
 
-//     console.log(data)
+    d3.json(`/api/years/${year}`).then((data) => {
 
-// });
+        console.log(data)
+
+        trace_gold = {
+            x: [1, 2, 3],
+            y: [1, 2, 3],
+            type: 'bar',
+            name: 'Gold Medals'
+        }
+        trace_silver = {
+            x: [1, 2, 3],
+            y: [1, 1, 1],
+            type: 'bar',
+            name: 'Silver Medals'
+        }
+        trace_bronze = {
+            x: [1, 2, 3],
+            y: [3, 2, 1],
+            type: 'bar',
+            name: 'Bronze Medals'
+        }
+
+        year_layout = {
+
+            title: 'Medals by Country for Select Year',
+            xaxis: {
+                tickangle: -45
+            },
+            barmode: 'stack'
+
+
+        }
+
+        trace_year = [trace_gold, trace_silver, trace_bronze]
+
+        plotly.newPlot('year_plot', trace_year, year_layout)
+    })
+
+
+
+};
+
+function optionYearChanged(newYear) {
+    buildYearChart(newYear);
+}
+
+buildYearChart("1924")

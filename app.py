@@ -50,6 +50,8 @@ def map():
 #End to Render Templates
 
 
+
+
 @app.route('/pageone')
 
 def pageone():
@@ -61,40 +63,58 @@ def pageone():
         "male": results_male,
         "female": results_female
     }
-    return jsonify(data)
-    # return render_template('HTML1.html')
+    # return jsonify(data)
+    return render_template('HTML1.html')
 
-@app.route('/pagetwo')
-def PageTwo():
 
-    # year=2014
 
-    mycursor.execute("SELECT noc, medal, count(Medal), event, year, season FROM olympic_data where Season = 'Winter' and Medal = 'Gold' group by year, noc, event, season, medal order by medal, count(Medal) desc")
+@app.route('/api/years/<year>')
+def years(year):
+
+    vyear= year
+
+    mycursor.execute("DECLARE vyear int SELECT noc, medal, count(Medal), event, year, season FROM olympic_data where Year = @vyear and Season = 'Winter' and Medal = 'Gold' group by year, noc, event, season, medal order by medal, count(Medal) desc")
     gold_data = mycursor.fetchall()
     gold_data_df = pd.DataFrame(gold_data)
-    # gold_data_df = pd.pivot_table(gold_data_df,"count",["year","noc", "event", "season"],"medal").fillna(0)
-    print(gold_data_df)
-
-    # gold_data_df['Bronze'].values[gold_data_df['Bronze'] > 1] = 1
-    # gold_data_df['Silver'].values[gold_data_df['Silver'] > 1] = 1
     gold_data_df['count'] = gold_data_df['count'].astype(int)
     gold_data_df['count'].values[gold_data_df['count'] > 1] = 1
     gold_data_df = gold_data_df.groupby('noc').sum()['count']
-    print(gold_data_df.head(20))
-    # mycursor.execute("SELECT noc, Medal, count(Medal), event FROM olympic_data where Season = 'Winter' and year = 2014 and Medal = 'Silver' group by Event, Medal, noc order by medal, count(Medal) desc")
-    # silver_data = mycursor.fetchall()
-    # mycursor.execute("SELECT noc, Medal, count(Medal), event FROM olympic_data where Season = 'Winter' and year = 2014 and Medal = 'Bronze' group by Event, Medal, noc order by medal, count(Medal) desc")
-    # bronze_data = mycursor.fetchall()
+    gold_data_df = gold_data_df.reset_index()
+    print(gold_data)
+    
+    mycursor.execute("SELECT noc, medal, count(Medal), event, year, season FROM olympic_data whereYear = @year and  Season = 'Winter' and Medal = 'Silver' group by year, noc, event, season, medal order by medal, count(Medal) desc")
+    silver_data = mycursor.fetchall()
+    silver_data_df = pd.DataFrame(silver_data)
+    silver_data_df['count'] = silver_data_df['count'].astype(int)
+    silver_data_df['count'].values[silver_data_df['count'] > 1] = 1
+    silver_data_df = silver_data_df.groupby('noc').sum()['count']
+    silver_data_df = silver_data_df.reset_index()
+    # print(silver_data_df.head(20))
+    
+    mycursor.execute("SELECT noc, medal, count(Medal), event, year, season FROM olympic_data where Year = @year and Year = @year and Season = 'Winter' and Medal = 'Bronze' group by year, noc, event, season, medal order by medal, count(Medal) desc")
+    bronze_data = mycursor.fetchall()
+    bronze_data_df = pd.DataFrame(bronze_data)
+    bronze_data_df['count'] = bronze_data_df['count'].astype(int)
+    bronze_data_df['count'].values[bronze_data_df['count'] > 1] = 1
+    bronze_data_df = bronze_data_df.groupby('noc').sum()['count']
+    bronze_data_df = bronze_data_df.reset_index()
+    print(bronze_data_df.head(20))
+
+
 
     data = {
-        "country": gold_data_df['noc'].to_list(),
-        "Gold": gold_data_df['count'].to_list(),
+        "Gold": {"country": [gold_data_df['noc'].to_list(), gold_data_df['count'].to_list()]},
+        "Silver": {"country": [silver_data_df['noc'].to_list(), silver_data_df['count'].to_list()]},
+        "Bronze": {"country": [bronze_data_df['noc'].to_list(), bronze_data_df['count'].to_list()]},
+        # "Gold": gold_data_df['count'].to_list(),
         # "Silver": len(silver_data),
         # "Bronze": len(bronze_data)
     }
 
     return jsonify(data)
-    # return render_template('index.html')
+
+
+
 
 @app.route('/pagethree')
 def PageThree():
@@ -102,7 +122,7 @@ def PageThree():
     data = mycursor.fetchall()
 
     return jsonify(data)
-    # return render_template('index.html')
+    
 
 
 if __name__ == "__main__":
