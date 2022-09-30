@@ -13,7 +13,7 @@
   <title>Data Medallers</title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='gender_years.js') }}"></script>
+  <script src="{{ url_for('static', filename='olympics.js') }}"></script>
 
 
 </head>
@@ -32,14 +32,14 @@
         <li class="nav-item">
           <a class="nav-link" href="/">Home Page<span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gender">PageOne</a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/pageone">PageOne</a>
+          <a class="nav-link" href="/year">PageTwo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pagetwo">PageTwo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pagethree">PageThree</a>
+          <a class="nav-link" href="/map">PageThree</a>
         </li>
       </ul>
     </div>
@@ -48,45 +48,38 @@
 
   <div class="container">
     <!-- Dropdown Bar-->
-    <label for="years">Choose a year:</label>
+    <div>
+      <label for="years">Choose a year:</label>
 
-    <select name="years" id="years">
-      <option value="1924">1924</option>
-      <option value="1928">1928</option>
-      <option value="1932">1932</option>
-      <option value="1936">1936</option>
-      <option value="1948">1948</option>
-      <option value="1952">1952</option>
-      <option value="1956">1956</option>
-      <option value="1960">1960</option>
-      <option value="1964">1964</option>
-      <option value="1968">1968</option>
-      <option value="1972">1972</option>
-      <option value="1976">1976</option>
-      <option value="1980">1980</option>
-      <option value="1984">1984</option>
-      <option value="1988">1988</option>
-      <option value="1992">1992</option>
-      <option value="1994">1994</option>
-      <option value="1998">1998</option>
-      <option value="2002">2002</option>
-      <option value="2006">2006</option>
-      <option value="2010">2010</option>
-      <option value="2014">2014</option>
+      <select name="year" id="year" onchange="optionYearChanged(this.value)">
+        <option value="1924">1924</option>
+        <option value="1928">1928</option>
+        <option value="1932">1932</option>
+        <option value="1936">1936</option>
+        <option value="1948">1948</option>
+        <option value="1952">1952</option>
+        <option value="1956">1956</option>
+        <option value="1960">1960</option>
+        <option value="1964">1964</option>
+        <option value="1968">1968</option>
+        <option value="1972">1972</option>
+        <option value="1976">1976</option>
+        <option value="1980">1980</option>
+        <option value="1984">1984</option>
+        <option value="1988">1988</option>
+        <option value="1992">1992</option>
+        <option value="1994">1994</option>
+        <option value="1998">1998</option>
+        <option value="2002">2002</option>
+        <option value="2006">2006</option>
+        <option value="2010">2010</option>
+        <option value="2014">2014</option>
+
+      </select>
       <!-- End of Dropdown Bar-->
-    </select>
-    <div class="row">
-
-      <div class="col-md-12">
-
-        <div id="plot">
-
-        </div>
-
-      </div>
-
+      <div id="year_plot"></div>
     </div>
-
+    <div>The Year is : {{year}}</div>
   </div>
 
 
