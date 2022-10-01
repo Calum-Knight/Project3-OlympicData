@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,7 +23,7 @@
 
 </head>
 
-<body>
+<body style="margin: 0px; padding: 0px">
 
   <!-- Nav Bar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar navbar-dark bg-dark">
@@ -30,7 +35,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home Page<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Home Page</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/gender">PageOne</a>
@@ -46,40 +51,45 @@
   </nav>
   <!-- End of Nav Bar -->
 
-  <div class="container">
+  <div class="container" style="margin: 20px">
+    <h2>Medal Performance</h2>
+    <hr>
     <!-- Dropdown Bar-->
-    <div>
-      <label for="years">Choose a year:</label>
+    <div class="row">
+      <div class="col-md-8">
+        <label for="years">Choose a year:</label>
 
-      <select name="year" id="year" onchange="optionYearChanged(this.value)">
-        <option value="1924">1924</option>
-        <option value="1928">1928</option>
-        <option value="1932">1932</option>
-        <option value="1936">1936</option>
-        <option value="1948">1948</option>
-        <option value="1952">1952</option>
-        <option value="1956">1956</option>
-        <option value="1960">1960</option>
-        <option value="1964">1964</option>
-        <option value="1968">1968</option>
-        <option value="1972">1972</option>
-        <option value="1976">1976</option>
-        <option value="1980">1980</option>
-        <option value="1984">1984</option>
-        <option value="1988">1988</option>
-        <option value="1992">1992</option>
-        <option value="1994">1994</option>
-        <option value="1998">1998</option>
-        <option value="2002">2002</option>
-        <option value="2006">2006</option>
-        <option value="2010">2010</option>
-        <option value="2014">2014</option>
+        <select name="year" id="year" onchange="optionYearChanged(this.value)">
+          <option value="1924">1924</option>
+          <option value="1928">1928</option>
+          <option value="1932">1932</option>
+          <option value="1936">1936</option>
+          <option value="1948">1948</option>
+          <option value="1952">1952</option>
+          <option value="1956">1956</option>
+          <option value="1960">1960</option>
+          <option value="1964">1964</option>
+          <option value="1968">1968</option>
+          <option value="1972">1972</option>
+          <option value="1976">1976</option>
+          <option value="1980">1980</option>
+          <option value="1984">1984</option>
+          <option value="1988">1988</option>
+          <option value="1992">1992</option>
+          <option value="1994">1994</option>
+          <option value="1998">1998</option>
+          <option value="2002">2002</option>
+          <option value="2006">2006</option>
+          <option value="2010">2010</option>
+          <option value="2014">2014</option>
 
-      </select>
-      <!-- End of Dropdown Bar-->
-      <div id="year_plot"></div>
+        </select>
+
+        <!-- End of Dropdown Bar-->
+        <div id="year_plot"></div>
+      </div>
     </div>
-    <div>The Year is : {{year}}</div>
+
   </div>
 
 

@@ -87,23 +87,32 @@ function buildYearChart(year) {
 
     d3.json(`/api/years/${year}`).then((data) => {
 
+        // console.log(data)
+
+
+        // console.log(data[2]["Bronze_Medals"])
+
         console.log(data)
+        x_noc = data[2]
+        y_gold = data[3]
+        y_silver = data[4]
+        y_bronze = data[5]
 
         trace_gold = {
-            x: [1, 2, 3],
-            y: [1, 2, 3],
+            x: x_noc,
+            y: y_gold,
             type: 'bar',
             name: 'Gold Medals'
         }
         trace_silver = {
-            x: [1, 2, 3],
-            y: [1, 1, 1],
+            x: x_noc,
+            y: y_silver,
             type: 'bar',
             name: 'Silver Medals'
         }
         trace_bronze = {
-            x: [1, 2, 3],
-            y: [3, 2, 1],
+            x: x_noc,
+            y: y_bronze,
             type: 'bar',
             name: 'Bronze Medals'
         }
@@ -112,7 +121,7 @@ function buildYearChart(year) {
 
             title: 'Medals by Country for Select Year',
             xaxis: {
-                tickangle: -45
+                tickangle: -90
             },
             barmode: 'stack'
 
@@ -121,7 +130,7 @@ function buildYearChart(year) {
 
         trace_year = [trace_gold, trace_silver, trace_bronze]
 
-        plotly.newPlot('year_plot', trace_year, year_layout)
+        Plotly.newPlot('year_plot', trace_year, year_layout)
     })
 
 
@@ -132,4 +141,4 @@ function optionYearChanged(newYear) {
     buildYearChart(newYear);
 }
 
-buildYearChart("1924")
+buildYearChart(1924)
