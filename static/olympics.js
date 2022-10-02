@@ -63,21 +63,12 @@ d3.json('/pageone').then(function (data) {
         xaxis: {
             tickangle: -45
         },
-        barmode: 'group'
+        barmode: 'group',
+
 
     }
     let data1 = [trace1, trace2];
     Plotly.newPlot('gender_plot', data1, layout)
-
-    // function selectmale(person) {
-    //     return person.sex == 'M';
-    // }
-    // filter() uses the custom function as its argument
-    // let Male = data.filter(selectmale);
-    // // Print to console
-    // console.log(Male);
-    //    return Male.year;
-
 });
 
 
@@ -88,13 +79,6 @@ function buildYearChart(year) {
     console.log(year)
 
     d3.json(`/api/years/${year}`).then((data) => {
-
-        // console.log(data)
-
-
-        // console.log(data[2]["Bronze_Medals"])
-
-        // console.log(data)
 
         function compare(a, b) {
             if (a.Gold > b.Gold) {
@@ -136,7 +120,8 @@ function buildYearChart(year) {
             x: x_noc,
             y: y_gold,
             type: 'bar',
-            name: 'Gold Medals'
+            name: 'Gold Medals',
+            color: 'yellow',
         }
         trace_silver = {
             x: x_noc,
@@ -168,16 +153,16 @@ function buildYearChart(year) {
 
 
 
-        var result = "<table border=1><thead><tr><th>Country</th><th>Gold</th><th>Silver</th><th>Bronze</th></tr></thead>";
-        for (var i = 0; i < data[3].length; i++) {
-            result += "<tr>";
-            for (var j = 2; j < 6; j++) {
-                result += "<td>" + data[j][i] + "</td>";
-            }
-            result += "</tr>";
-        }
-        result += "</table>";
-        console.log(result)
+        // var result = "<table border=1><thead><tr><th>Country</th><th>Gold</th><th>Silver</th><th>Bronze</th></tr></thead>";
+        // for (var i = 0; i < data[3].length; i++) {
+        //     result += "<tr>";
+        //     for (var j = 2; j < 6; j++) {
+        //         result += "<td>" + data[j][i] + "</td>";
+        //     }
+        //     result += "</tr>";
+        // }
+        // result += "</table>";
+        // console.log(result)
 
 
 
@@ -196,11 +181,27 @@ function buildYearChart(year) {
                     row.append(cell);
                 }
             }
+            // var table = document.getElementById("table");
+            // var tb = document.querySelectorAll('tbody');
+
+            // if (tb.len > 0) {
+            //     for (var i = 0; i < tb.length; i++) {
+            //         if (tb[i].children.length != 0) {
+            //             tb[i].table.removeChild(tb[i]);
+            //         }
+            //     }
+
+
+            // }
+
+            // function deleteRow() {
+
+            // table.deleteRow(1);
 
             function populatebody() {
                 var table = document.getElementById("table");
+
                 var tbody = table.createTBody(table);
-                // let table_data = data[6]
                 for (let i = 0; i < data[6].length; i++) {
 
                     var row = tbody.insertRow(0);
@@ -211,8 +212,11 @@ function buildYearChart(year) {
                   <td id = 'col3'>${data[6][i].Bronze}</td>
                   <td id = 'coloth'>${data[6][i].Gold + data[6][i].Silver + data[6][i].Bronze}</td>
                   `;
+
+
                 }
-            }
+                console.log(table)
+            };
             function sortTable() {
                 var table, rows, switching, i, x, y, shouldSwitch;
                 table = document.getElementById("table");
@@ -247,15 +251,18 @@ function buildYearChart(year) {
                         switching = true;
                     }
                 }
-            }
-
+            };
             createheader();
+            // deleteRow()
             populatebody();
             sortTable();
-        }
+
+        };
         buildYearTable(year)
-    });
-}
+    })
+
+};
+
 
 function optionYearChanged(newYear) {
     buildYearChart(newYear);
