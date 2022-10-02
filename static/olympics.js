@@ -67,7 +67,7 @@ d3.json('/pageone').then(function (data) {
 
     }
     let data1 = [trace1, trace2];
-    Plotly.newPlot('plot', data1, layout)
+    Plotly.newPlot('gender_plot', data1, layout)
 
     // function selectmale(person) {
     //     return person.sex == 'M';
@@ -81,6 +81,8 @@ d3.json('/pageone').then(function (data) {
 });
 
 
+
+
 function buildYearChart(year) {
 
     console.log(year)
@@ -92,11 +94,43 @@ function buildYearChart(year) {
 
         // console.log(data[2]["Bronze_Medals"])
 
-        console.log(data)
-        x_noc = data[2]
-        y_gold = data[3]
-        y_silver = data[4]
-        y_bronze = data[5]
+        // console.log(data)
+
+        function compare(a, b) {
+            if (a.Gold > b.Gold) {
+                return -1;
+            }
+            if (a.Gold < b.Gold) {
+                return 1;
+            }
+            return 0;
+        }
+
+        data[6].sort(compare);
+        console.log(data[6])
+
+        let x_noc = data[6].map(function (list) {
+            return list.Country;
+        });
+
+        let y_gold = data[6].map(function (list) {
+            return list.Gold;
+        });
+
+        let y_silver = data[6].map(function (list) {
+            return list.Silver;
+        });
+        let y_bronze = data[6].map(function (list) {
+            return list.Bronze;
+        });
+
+
+        // noc1 = data[6].map()
+
+        // x_noc = data[2]
+        // y_gold = data[3]
+        // y_silver = data[4]
+        // y_bronze = data[5]
 
         trace_gold = {
             x: x_noc,
@@ -131,14 +165,101 @@ function buildYearChart(year) {
         trace_year = [trace_gold, trace_silver, trace_bronze]
 
         Plotly.newPlot('year_plot', trace_year, year_layout)
-    })
 
 
 
-};
+        var result = "<table border=1><thead><tr><th>Country</th><th>Gold</th><th>Silver</th><th>Bronze</th></tr></thead>";
+        for (var i = 0; i < data[3].length; i++) {
+            result += "<tr>";
+            for (var j = 2; j < 6; j++) {
+                result += "<td>" + data[j][i] + "</td>";
+            }
+            result += "</tr>";
+        }
+        result += "</table>";
+        console.log(result)
+
+
+
+        function buildYearTable(year) {
+            function createheader() {
+
+                var table = document.getElementById("table");
+                table.deleteTHead();
+                var header = table.createTHead(table);
+                var row = header.insertRow(0);
+
+                var head = ["Country", "Gold", "Silver", "Bronze", "Total"];
+                for (let i = 0; i < head.length; i++) {
+                    let cell = document.createElement("td");
+                    cell.innerText = head[i];
+                    row.append(cell);
+                }
+            }
+
+            function populatebody() {
+                var table = document.getElementById("table");
+                var tbody = table.createTBody(table);
+                // let table_data = data[6]
+                for (let i = 0; i < data[6].length; i++) {
+
+                    var row = tbody.insertRow(0);
+                    row.innerHTML = `
+                  <td id = 'coloth'>${data[6][i].Country}</td>
+                  <td id = 'col1'>${data[6][i].Gold}</td>
+                  <td id = 'col2'>${data[6][i].Silver}</td>
+                  <td id = 'col3'>${data[6][i].Bronze}</td>
+                  <td id = 'coloth'>${data[6][i].Gold + data[6][i].Silver + data[6][i].Bronze}</td>
+                  `;
+                }
+            }
+            function sortTable() {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("table");
+                switching = true;
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                    // Start by saying: no switching is done:
+                    switching = false;
+                    rows = table.rows;
+                    /* Loop through all table rows (except the
+                    first, which contains table headers): */
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        // Start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* Get the two elements you want to compare,
+                        one from current row and one from the next: */
+                        x = rows[i].getElementsByTagName("TD")[1];
+                        y = rows[i + 1].getElementsByTagName("TD")[1];
+                        // Check if the two rows should switch place:
+                        if (x.innerHTML < y.innerHTML) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                        // .toLowerCase()
+                    }
+                    if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark that a switch has been done: */
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+
+            createheader();
+            populatebody();
+            sortTable();
+        }
+        buildYearTable(year)
+    });
+}
 
 function optionYearChanged(newYear) {
     buildYearChart(newYear);
 }
 
 buildYearChart(1924)
+buildYearTable(1924)

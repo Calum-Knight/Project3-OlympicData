@@ -19,7 +19,34 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='olympics.js') }}"></script>
+  <style>
+    thead {
+      font-weight: bold;
+      font-size: 16px;
+    }
 
+    td {
+      text-align: center
+    }
+
+    #col1 {
+      background-color: gold;
+    }
+
+    #col2 {
+      background-color: silver;
+    }
+
+    #col3 {
+      background-color: rgb(201, 110, 35);
+    }
+
+    #coloth {
+      font-weight: bold;
+    }
+
+    ;
+  </style>
 
 </head>
 
@@ -27,7 +54,7 @@
 
   <!-- Nav Bar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="">Data Medallers</a>
+    <a class="navbar-brand" href="/">Data Medallers</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,10 +65,10 @@
           <a class="nav-link" href="/">Home Page</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/gender">PageOne</a>
+          <a class="nav-link" href="/gender">Gender Participation</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/year">PageTwo</a>
+          <a class="nav-link" href="/year">Medals by Year</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/map">PageThree</a>
@@ -87,6 +114,11 @@
 
         <!-- End of Dropdown Bar-->
         <div id="year_plot"></div>
+      </div>
+      <div class="col-md-4" style="width: 100%">
+
+        <table id="table" class="display" width="100%"></table>
+
       </div>
     </div>
 
