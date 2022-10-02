@@ -50,8 +50,8 @@ def pageone():
         "male": results_male,
         "female": results_female
     }
-    # return jsonify(data)
-    return render_template('HTML1.html')
+    return jsonify(data)
+    # return render_template('HTML1.html')
 
 
 
@@ -132,9 +132,13 @@ def years(year):
     silver_ = merge2_df["Silver_Medals"].to_list()
     bronze_ = merge2_df["Bronze_Medals"].to_list()
     
-   
+    medal_lists = []
+    for x in range(len(noc)):
+        medal_dict = {"Country":noc[x], "Gold": gold_[x], "Silver": silver_[x], "Bronze": bronze_[x]}
+        medal_lists.append(medal_dict)
     
-    return jsonify(data, nocs,noc, gold_, silver_, bronze_)
+
+    return jsonify(data, nocs,noc, gold_, silver_, bronze_,medal_lists)
 
 
 

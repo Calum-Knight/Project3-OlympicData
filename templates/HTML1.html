@@ -13,7 +13,7 @@
   <title>Data Medallers</title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='gender_years.js') }}"></script>
+  <script src="{{ url_for('static', filename='olympics.js') }}"></script>
 
 
 </head>
@@ -22,7 +22,7 @@
 
   <!-- Nav Bar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="">Data Medallers</a>
+    <a class="navbar-brand" href="/">Data Medallers</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,10 +33,10 @@
           <a class="nav-link" href="/">Home Page<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/gender">PageOne</a>
+          <a class="nav-link" href="/gender">Gender Participation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/year">PageTwo</a>
+          <a class="nav-link" href="/year">Medals by Year</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/map">PageThree</a>
@@ -52,7 +52,7 @@
 
       <div class="col-md-12">
 
-        <div id="plot">
+        <div id="gender_plot">
 
         </div>
 
