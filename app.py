@@ -131,14 +131,25 @@ def years(year):
     gold_ = merge2_df["Gold_Medals"].to_list()
     silver_ = merge2_df["Silver_Medals"].to_list()
     bronze_ = merge2_df["Bronze_Medals"].to_list()
+
+    list_of_list = [noc, gold_, silver_, bronze_]
+    table_lists = []
+    for i in range(len(noc)):
+        table_list = [noc[i],gold_[i],silver_[i],bronze_[i], gold_[i] + silver_[i] + bronze_[i]]
+        table_lists.append(table_list)
     
+    table_data = {
+        "table": table_lists
+    }
+   
+
     medal_lists = []
     for x in range(len(noc)):
         medal_dict = {"Country":noc[x], "Gold": gold_[x], "Silver": silver_[x], "Bronze": bronze_[x]}
         medal_lists.append(medal_dict)
     
 
-    return jsonify(data, nocs,noc, gold_, silver_, bronze_,medal_lists)
+    return jsonify(data, nocs,noc, gold_, silver_, bronze_,medal_lists, table_data)
 
 
 
