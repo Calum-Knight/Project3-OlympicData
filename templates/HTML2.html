@@ -51,6 +51,12 @@
       border-style: solid
     }
 
+    thead {
+      border-radius: 25px;
+      border-width: 3px;
+      border-style: solid
+    }
+
     ;
   </style>
 
@@ -84,12 +90,12 @@
   </nav>
   <!-- End of Nav Bar -->
 
-  <div class="container" style="margin: 20px">
+  <div class="container-fluid" style="margin: 20px">
     <h2>Medal Performance</h2>
     <hr>
     <!-- Dropdown Bar-->
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <label for="years">Choose a year:</label>
 
         <select name="year" id="year" onchange="optionYearChanged(this.value)">
@@ -121,7 +127,7 @@
         <!-- End of Dropdown Bar-->
         <div id="year_plot"></div>
       </div>
-      <div class="col-md-4" style="width: 100%">
+      <div class="col-md-4" style="margin: 3px">
 
         <table id="table" class="display" width="100%"></table>
 

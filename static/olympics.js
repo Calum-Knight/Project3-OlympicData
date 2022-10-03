@@ -1,10 +1,6 @@
-// var url = "/Data"
+
 d3.json('/pageone').then(function (data) {
-    // d3.json(url).then(function (data) {
-    // d3.json('../data.json')
 
-
-    // .then(function(data){
 
     console.log(data);
 
@@ -28,20 +24,6 @@ d3.json('/pageone').then(function (data) {
     });
     console.log("Male:", olympic_m);
 
-    // let olympic_city = data.map(function(data){
-    //     return data.city;
-    // });
-    // console.log("City:",olympic_city);
-
-    // let olympic_medal = data.map(function(data){
-    //     return data.medal;
-    // });
-    // console.log("Medal:",olympic_medal);
-
-    // let olympic_noc = data.map(function(data){
-    //     return data.noc;
-    // });
-    // console.log("Team:",olympic_noc);
 
     trace1 = {
         x: olympic_year_f,
@@ -143,20 +125,19 @@ function buildYearChart(year) {
 
         Plotly.newPlot('year_plot', trace_year, year_layout)
 
-        // var result = "<table border=1><thead><tr><th>Country</th><th>Gold</th><th>Silver</th><th>Bronze</th></tr></thead>";
-        // for (var i = 0; i < data[3].length; i++) {
-        //     result += "<tr>";
-        //     for (var j = 2; j < 6; j++) {
-        //         result += "<td>" + data[j][i] + "</td>";
-        //     }
-        //     result += "</tr>";
-        // }
-        // result += "</table>";
-        // console.log(result)
-
 
 
         function buildYearTable(year) {
+
+            var table = document.getElementById("table");
+            var tb = document.querySelectorAll('tbody');
+
+            if (tb.length > 0) {
+
+                $("#table tr").remove();
+            }
+
+
             function createheader() {
 
                 var table = document.getElementById("table");
@@ -171,24 +152,11 @@ function buildYearChart(year) {
                     row.append(cell);
                 }
             }
-            // var table = document.getElementById("table");
-            // var tb = document.querySelectorAll('tbody');
-
-            // if (tb.len > 0) {
-            //     for (var i = 0; i < tb.length; i++) {
-            //         if (tb[i].children.length != 0) {
-            //             tb[i].table.removeChild(tb[i]);
-            //         }
-            //     }
-
-
-            // }
-
-            // function deleteRow() {
-
-            // table.deleteRow(1);
 
             function populatebody() {
+
+
+
                 var table = document.getElementById("table");
 
                 var tbody = table.createTBody(table);
@@ -244,7 +212,6 @@ function buildYearChart(year) {
                 }
             };
             createheader();
-            // deleteRow()
             populatebody();
             sortTable();
 
@@ -258,5 +225,4 @@ function optionYearChanged(newYear) {
     buildYearChart(newYear);
 }
 
-buildYearChart(1924)
-// buildYearTable(1924)
+buildYearChart(parseInt(1924))
