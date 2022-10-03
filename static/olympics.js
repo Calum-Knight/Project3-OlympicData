@@ -108,14 +108,6 @@ function buildYearChart(year) {
             return list.Bronze;
         });
 
-
-        // noc1 = data[6].map()
-
-        // x_noc = data[2]
-        // y_gold = data[3]
-        // y_silver = data[4]
-        // y_bronze = data[5]
-
         trace_gold = {
             x: x_noc,
             y: y_gold,
@@ -150,8 +142,6 @@ function buildYearChart(year) {
         trace_year = [trace_gold, trace_silver, trace_bronze]
 
         Plotly.newPlot('year_plot', trace_year, year_layout)
-
-
 
         // var result = "<table border=1><thead><tr><th>Country</th><th>Gold</th><th>Silver</th><th>Bronze</th></tr></thead>";
         // for (var i = 0; i < data[3].length; i++) {
@@ -216,6 +206,7 @@ function buildYearChart(year) {
 
                 }
                 console.log(table)
+                console.log(tbody)
             };
             function sortTable() {
                 var table, rows, switching, i, x, y, shouldSwitch;
@@ -260,8 +251,7 @@ function buildYearChart(year) {
         };
         buildYearTable(year)
     })
-
-};
+}
 
 
 function optionYearChanged(newYear) {
@@ -269,4 +259,4 @@ function optionYearChanged(newYear) {
 }
 
 buildYearChart(1924)
-buildYearTable(1924)
+// buildYearTable(1924)
