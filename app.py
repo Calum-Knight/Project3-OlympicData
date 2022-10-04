@@ -154,12 +154,12 @@ def years(year):
 
 
 
-@app.route('/pagethree')
-def PageThree():
-    mycursor.execute("SELECT noc, city, year, medal, count(medal) FROM olympic_data WHERE Season = 'Winter' group by medal, noc, city, year order by year")
-    data = mycursor.fetchall()
+# @app.route('/pagethree')
+# def PageThree():
+#     mycursor.execute("SELECT noc, city, year, medal, count(medal) FROM olympic_data WHERE Season = 'Winter' group by medal, noc, city, year order by year")
+#     data = mycursor.fetchall()
 
-    return jsonify(data)
+#     return jsonify(data)
     
 
 
