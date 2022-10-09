@@ -37,6 +37,6 @@ Visualisations-
 
 ![images/image.png](images/image.png)
 
-![images/image(1).png](images/image(1).png)
+![images/image_2.png](images/image_2.png)
 
-![images/image(2).png](images/image(2).png)
+![images/image_3.png](images/image_3.png)
