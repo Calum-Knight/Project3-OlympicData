@@ -1,9 +1,11 @@
-# Project3-OlympicData
+# Project3-Winter Olympics
 
 Data Olympians(project contributors)
 Calum, Ruchi, Minnie, Mohamed
 
+
 Initial Project Proposal-
+
 For the team project, the chosen theme that has been decided is data within Olympics. The time interval will be from the Athens Olympics Athens 1896 to Rio 2016. 
 The dataset gives the result (Gold, Silver, Bronze) for each sporting event including all participating countries. The questions that we will attempt to answer are.
 
@@ -11,9 +13,14 @@ The dataset gives the result (Gold, Silver, Bronze) for each sporting event incl
 2) Are women better represented at the Summer or Winter Olympic games
 3) Map to show which countries have hosted the Olympics and how female representation has grown over the years 
 
+
 Initial proposal continued-
 
-Kaggle -> CSV -> Python -> PostgreSQL -> Flask -> HTML,CSS,JS -> D3 -> Plotly -> Leaflet -> WEB 
+Kaggle -> CSV -> Python -> PostgreSQL -> Flask -> HTML,CSS,JS -> D3 -> Plotly -> Leaflet -> WEB
+
+
+Questions Updated- 
+
 
 Final Visualisations -
 
@@ -23,12 +30,13 @@ Final Visualisations -
 
 3) Pop up olympic venue cities from 1924 - 2014 on world map showing the change in women participation percentage from last year using leaflet. 1936 showed the maximum growth of 268 % in women participation while 1948, 1964, 1952 also had 64, 37, 39% high participation respectively.
 
+
 Visualisations- 
 
-![what is this](Images/homepage.png)
+![images/homepage.png](images/homepage.png)
 
-![what is this](Images/image.png)
+![images/image.png](images/image.png)
 
-![what is this](Images/image(1).png)
+![images/image(1).png](images/image(1).png)
 
-![what is this](Images/image(2).png)
+![images/image(2).png](images/image(2).png)
