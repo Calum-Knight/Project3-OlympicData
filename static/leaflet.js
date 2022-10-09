@@ -7,9 +7,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 
 // // Country data
-var cities = [{
-  year: "1924", city: "Chamonix", location: [45.9246705, 6.8727506], event_count: 2, female_count: 17, change_per: 0
-},
+var cities = [
+{year: "1924", city: "Chamonix", location: [45.9246705, 6.8727506], event_count: 2, female_count: 17, change_per: 0},
 { year: "1928", city: "Sankt Moritz", location: [46.4978958, 9.8392428], event_count: 2, female_count: 33, change_per: 94.11 },
 { year: "1932", city: "Lake Placid", location: [44.279621, -73.979874], event_count: 2, female_count: 22, change_per: -33.33 },
 { year: "1936", city: "Garmisch-Partenkirchen", location: [47.4923741, 11.0962815], event_count: 3, female_count: 81, change_per: 268.18 },
@@ -30,8 +29,8 @@ var cities = [{
 { year: "2002", city: "Salt Lake City", location: [40.7596198, -111.8867975], event_count: 70, female_count: 1582, change_per: 14.30 },
 { year: "2006", city: "Torino", location: [45.0677551, 7.6824892], event_count: 77, female_count: 1757, change_per: 11.06 },
 { year: "2010", city: "Vancouver", location: [49.2608724, -123.113952], event_count: 77, female_count: 1847, change_per: 5.12 },
-{ year: "2014", city: "Sochi", location: [43.5854823, 39.723109], event_count: 91, female_count: 2023, change_per: 9.52 }];
-
+{ year: "2014", city: "Sochi", location: [43.5854823, 39.723109], event_count: 91, female_count: 2023, change_per: 9.52 }
+]
 // Looping through the cities array, create one marker for each city, bind a popup containing its year and % change, and add it to the map.
 for (var i = 0; i < cities.length; i++) {
   var city = cities[i];
