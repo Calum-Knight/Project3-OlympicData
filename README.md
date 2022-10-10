@@ -24,14 +24,15 @@ Questions Updated-
 
 Final Visualisations -
 
-1) Men and Women Participation throughout the years through Plotly Bar graph. It Shows that women participation increased almost year from 1924 and the ration between men and women participation 
+1) Men and Women Participation throughout the years through Plotly Bar graph. To show how female participation in Winter Olympics is improving against male participation and the gap is closing down in every subsequent event
+-- It Shows that women participation increased almost year from 1924 and the ratio between men and women participation is getting small
 
 2) Medal Summary(Country wise medal count) of all the Olympic Games through dropdown button using Plotly stacked Bar Graph and table.
 
 3) Pop up olympic venue cities from 1924 - 2014 on world map showing the change in women participation percentage from last year using leaflet. 1936 showed the maximum growth of 268 % in women participation while 1948, 1964, 1952 also had 64, 37, 39% high participation respectively.
 
 
-Visualisations- 
+Website Images- 
 
 ![images/homepage.png](images/homepage.png)
 
