@@ -14,12 +14,9 @@ The dataset gives the result (Gold, Silver, Bronze) for each sporting event incl
 3) Map to show which countries have hosted the Olympics and how female representation has grown over the years 
 
 
-Initial proposal continued-
+Project flow-
 
 Kaggle -> CSV -> Python -> PostgreSQL -> Flask -> HTML,CSS,JS -> D3 -> Plotly -> Leaflet -> WEB
-
-
-Questions Updated- 
 
 
 Final Visualisations -
